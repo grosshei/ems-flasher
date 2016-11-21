@@ -1,6 +1,17 @@
 language: c
-install: sudo apt-get -y install make gcc g++ pkg-config libusb-1.0-0-dev
-script: ./config.sh && make
+
+os:
+  - linux
+  - osx
+
 compiler:
   - clang
   - gcc
+
+install: 
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -y install pkg-config libusb-1.0-0-dev
+ - if [[ "$TRAVIS_OS_NAME" == "osx" ]];
+
+#sudo apt-get -y install make gcc g++ pkg-config libusb-1.0-0-dev
+
+script: ./config.sh && make
